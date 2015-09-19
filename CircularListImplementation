@@ -1,0 +1,16 @@
+#include "CircularList.h";
+template<class T>
+void CircularList<T>::add(T data)
+{
+	AnimalNode<T> *p;
+
+	p = new AnimalNode<T>();
+	p->data = data;
+	p->next = current->next;
+	if(current->previous == current){
+		current->previous = p;
+	}
+	current->next = p;
+	(p->next)->previous = p;
+	p->previous = current;
+}
