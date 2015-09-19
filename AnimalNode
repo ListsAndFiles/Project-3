@@ -1,0 +1,11 @@
+#include "stdafx.h";
+
+template <class T>
+class AnimalNode
+{
+public:
+	T data;
+private:
+	AnimalNode<T> *next;
+	AnimalNode<T> *previous;
+};
