@@ -1,0 +1,16 @@
+#include "AnimalNode.h";
+
+template<class T>
+class CircularList{
+public:
+	void add(T data);
+	void remove();
+	bool isEmpty();
+	CircularList(){
+		current = new AnimalNode<T>();
+		current->next = current;
+		current->previous = current;
+	}
+private:
+	AnimalNode<T> *current;
+};
