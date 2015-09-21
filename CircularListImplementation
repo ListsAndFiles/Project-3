@@ -14,3 +14,13 @@ void CircularList<T>::add(T data)
 	(p->next)->previous = p;
 	p->previous = current;
 }
+
+template<class T>
+void CircularList<T>::editCurrent()
+{
+	try{
+		(current->data).edit();
+	}catch(...){
+		cout << "Unable to edit." << endl;
+	}
+}
