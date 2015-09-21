@@ -1,5 +1,5 @@
 
-#include "stdafx.h"
+#include "stdafx.h";
 #include "Animals.h";
 
 Animal::Animal()
@@ -68,7 +68,7 @@ void Animal::print(){
 		<< "Extinct:  " << numberOfLegs << endl;
 }
 void Animal::edit(){
-	cout << this << endl << endl;
+	cout << *(this) << endl << endl;
 	cout << "Enter \"1\" to change  \"Name.\"" << endl;
 	cout << "Enter \"2\" to change \"Number of legs.\"" << endl;
 	cout << "Enter \"3\" to change \"Class.\"" << endl;
@@ -78,9 +78,11 @@ void Animal::edit(){
 	int choice;
 	cin >> choice;
 	if(cin.fail()){
-		cin.clear();
-		cin.ignore(numeric_limits<streamsize>::max());
 		cout << "Not a valid option." << endl;
+		cin.clear();
+		cin.ignore();
+		
+		
 	}
 	else{
 		switch(choice){
@@ -136,8 +138,8 @@ ostream &operator << (ostream& out, const Animal& theAnimal){
 	out << "Name:  " << theAnimal.name << endl
 		<< "Number of legs:  " << theAnimal.numberOfLegs << endl
 		<< "Class:  " << theAnimal.animalClass << endl
-		<< "Can fly:  " << theAnimal.canFly << endl
-		<< "Extinct:  " << theAnimal.extinct << endl;
+		<< "Can fly:  " << (theAnimal.canFly ? "Yes" : "No") << endl
+		<< "Extinct:  " << (theAnimal.extinct ? "Yes" : "No") << endl;
 
 	return(out);
 }
