@@ -1,0 +1,34 @@
+#include "stdafx.h";
+#include <iostream>;
+#include <string>;
+
+using namespace std;
+
+#ifndef Animal_H
+#define Animal_H
+class Animal{
+
+	friend ostream &operator << (ostream& out, const Animal& theAnimal);
+public:
+	Animal();
+	Animal(string animalName, int animalNumberOfLegs, string animalAnimalClass, bool animalCanFly, bool animalExtinct);
+	string getName() const;
+	int getNumberOfLegs() const;
+	string getAnimalClass() const;
+	bool getCanFly() const;
+	bool getExtinct() const;
+	void setName(string animalName);
+	void setNumberOfLegs(int animalNumberOfLegs);
+	void setAnimalClass(string animalAnimalClass);
+	void setCanFly(bool animalCanFly);
+	void setExtinct(bool animalExtinct);
+	void print();
+	void edit();
+private:
+	string name;
+	int numberOfLegs;
+	string animalClass;
+	bool canFly;
+	bool extinct;
+};
+#endif
