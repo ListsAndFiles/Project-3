@@ -1,4 +1,5 @@
 #include "stdafx.h";
+#include <iostream>;
 
 template <class T>
 class AnimalNode
@@ -8,4 +9,5 @@ public:
 private:
 	AnimalNode<T> *next;
 	AnimalNode<T> *previous;
+	template<class T> friend class CircularList;
 };
