@@ -4,6 +4,7 @@ template<class T>
 class CircularList{
 public:
 	void add(T data);
+	void editCurrent();
 	void remove();
 	bool isEmpty();
 	CircularList(){
