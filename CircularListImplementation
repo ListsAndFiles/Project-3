@@ -1,18 +1,25 @@
+#include "stdafx.h";
 #include "CircularList.h";
-template<class T>
-void CircularList<T>::add(T data)
+
+template<class T> void CircularList<T>::add(T data)
 {
 	AnimalNode<T> *p;
-
-	p = new AnimalNode<T>();
-	p->data = data;
-	p->next = current->next;
-	if(current->previous == current){
-		current->previous = p;
+	if(itemsInList == 0){
+		current->data = data;
+		itemsInList++;
 	}
-	current->next = p;
-	(p->next)->previous = p;
-	p->previous = current;
+	else{
+		p = new AnimalNode<T>();
+		p->data = data;
+		p->next = current->next;
+		if(current->previous == current){
+			current->previous = p;
+		}
+		current->next = p;
+		(p->next)->previous = p;
+		p->previous = current;
+		itemsInList++;
+	}
 }
 
 template<class T>
@@ -22,5 +29,23 @@ void CircularList<T>::editCurrent()
 		(current->data).edit();
 	}catch(...){
 		cout << "Unable to edit." << endl;
+	}
+}
+template<class T>
+void CircularList<T>::displayCurrent()
+{
+	try{
+		cout << current->data;
+	}catch(...){
+		cout << "Cannot display current.";
+		}
+}
+template<class T>
+bool CircularList<T>::isEmpty(){
+	if(itemsInList == 0){
+		return(true);
+	}
+	else{
+	return(false)
 	}
 }
