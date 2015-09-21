@@ -1,0 +1,143 @@
+
+#include "stdafx.h"
+#include "Animals.h";
+
+Animal::Animal()
+{
+	 setName("");
+	 setNumberOfLegs(0);
+	 setAnimalClass("");
+	 setCanFly(false);
+	 setExtinct(true);
+}
+
+Animal::Animal(string animalName, int animalNumberOfLegs, string animalAnimalClass, bool animalCanFly, bool animalExtinct)
+{
+	setName(animalName);
+	setNumberOfLegs(animalNumberOfLegs);
+	setAnimalClass(animalAnimalClass);
+	setCanFly(animalCanFly);
+	setExtinct(animalExtinct);
+}
+string Animal::getName() const
+{
+	return(name);
+}
+int Animal::getNumberOfLegs() const
+{
+	return(numberOfLegs);
+}
+string Animal::getAnimalClass() const
+{
+	return(animalClass);
+}
+bool Animal::getCanFly() const
+{
+	return(canFly);
+}
+bool Animal::getExtinct() const
+{
+	return(extinct);
+}
+void Animal::setName(string animalName)
+{
+	name = animalName;
+}
+void Animal::setNumberOfLegs(int animalNumberOfLegs)
+{
+	numberOfLegs = animalNumberOfLegs;
+}
+void Animal::setAnimalClass(string animalAnimalClass)
+{
+	animalClass = animalAnimalClass;
+}
+void Animal::setCanFly(bool animalCanFly)
+{
+	canFly = animalCanFly;
+}
+void Animal::setExtinct(bool animalExtinct)
+{
+	extinct = animalExtinct;
+}
+
+void Animal::print(){
+	cout << "Name:  " << name << endl
+		<< "Number of legs:  " << numberOfLegs << endl
+		<< "Class:  " << animalClass << endl
+		<< "Can fly:  " << numberOfLegs << endl
+		<< "Extinct:  " << numberOfLegs << endl;
+}
+void Animal::edit(){
+	cout << this << endl << endl;
+	cout << "Enter \"1\" to change  \"Name.\"" << endl;
+	cout << "Enter \"2\" to change \"Number of legs.\"" << endl;
+	cout << "Enter \"3\" to change \"Class.\"" << endl;
+	cout << "Enter \"4\" to change \"Can fly.\"" << endl;
+	cout << "Enter \"5\" to change \"Extinct.\"" << endl;
+	cout << "Enter \"-1\" to cancel." << endl;
+	int choice;
+	cin >> choice;
+	if(cin.fail()){
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max());
+		cout << "Not a valid option." << endl;
+	}
+	else{
+		switch(choice){
+		case 1: {
+			string newName;
+			cout << "Enter the new name." << endl;
+			getline(cin, newName);
+			setName(newName);
+			cin.clear();
+			break;
+				}
+		case 2: {
+			int newNumber;
+			cout << "Enter the new number of legs." << endl;
+			cin >> newNumber;
+			if(cin.fail()){
+				cin.clear();
+				cin.ignore(numeric_limits<streamsize>::max());
+				break;
+			}
+			else{
+				setNumberOfLegs(newNumber);
+				break;
+			}
+				}
+		case 3: {
+			string newClass;
+			cout << "Enter the new class." << endl;
+			getline(cin, newClass);
+			setAnimalClass(newClass);
+			cin.clear();
+			break;
+				}
+		case 4: {
+			setCanFly(!canFly);
+			break;
+				}
+		case 5: {
+			setExtinct(!extinct);
+			break;
+				}
+		case -1: {
+			break;
+				 }
+		default: {
+			cout << "Not a valid option." << endl;
+		}
+		}
+	}
+}
+
+ostream &operator << (ostream& out, const Animal& theAnimal){
+	out << "Name:  " << theAnimal.name << endl
+		<< "Number of legs:  " << theAnimal.numberOfLegs << endl
+		<< "Class:  " << theAnimal.animalClass << endl
+		<< "Can fly:  " << theAnimal.canFly << endl
+		<< "Extinct:  " << theAnimal.extinct << endl;
+
+	return(out);
+}
