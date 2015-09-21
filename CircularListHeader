@@ -1,3 +1,4 @@
+#include "stdafx.h";
 #include "AnimalNode.h";
 
 template<class T>
@@ -6,12 +7,15 @@ public:
 	void add(T data);
 	void editCurrent();
 	void remove();
+	void displayCurrent();
 	bool isEmpty();
 	CircularList(){
 		current = new AnimalNode<T>();
 		current->next = current;
 		current->previous = current;
+		itemsInList = 0;
 	}
 private:
 	AnimalNode<T> *current;
+	int itemsInList;
 };
