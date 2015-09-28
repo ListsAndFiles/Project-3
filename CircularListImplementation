@@ -1,5 +1,7 @@
 #include "stdafx.h";
 #include "CircularList.h";
+#include <string>;
+#include <iostream>;
 
 template<class T> void CircularList<T>::add(T data)
 {
@@ -47,5 +49,74 @@ bool CircularList<T>::isEmpty(){
 	}
 	else{
 	return(false)
+	}
+}
+template<class T> void CircularList<T>::sort(){
+	try{
+	std::string firstItem = "";
+	bool swapped = true;
+	int x = 1;
+
+	while(swapped){
+		swapped = false;
+		AnimalNode<T> *temp = current;
+		for(int counter = 1; counter < itemsInList; counter++){
+			x = (temp->data).compare((temp->next)->data);
+			if(x > 0){
+				if(firstItem.compare("") == 0){
+					firstItem = ((temp->next)->data).getName();
+				}
+				else{
+					if(firstItem.compare(((temp->next)->data).getName()) > 0)
+						firstItem = ((temp->next)->data).getName();
+				}
+				T tempData = (temp->next)->data;
+				(temp->next)->data = temp->data;
+				temp->data = tempData;
+
+
+				swapped = true;
+				break;
+			}
+			else{
+				if(firstItem.compare("") == 0){
+					firstItem = (temp->data).getName();
+				}
+				temp = temp->next;
+			}
+		}
+	}
+	/*AnimalNode<T> *temp3 = current;
+	for(int counter = 0; counter < itemsInList; counter++){
+		if(((temp3->data).getName()).compare(firstItem)){
+			AnimalNode<T> *temp4 = current;
+			current = temp3;
+			(temp4->previous)->next = temp4;
+			(temp4->next)->previous = temp4;
+		}
+		else{
+			temp3 = temp3->next;
+		}
+	}*/
+	}catch(...){
+		std::cout << "Unable to sort." << std::endl;
+	}
+}
+template<class T> CircularList<T> CircularList<T>::search(std::string find){
+	AnimalNode<T> *temp = current;
+	CircularList<T> tempList;
+	try{
+		for(int counter = 0; counter < itemsInList; counter++){
+			if((temp->data).hasString(find)){
+				tempList.add(temp->data);
+			}
+			temp = temp->next;
+		}
+		tempList.displayCurrent();
+		return(tempList);
+	}catch(...){
+		std::cout << "Search failed." << std::endl;
+		CircularList<T> failed;
+		return(failed);
 	}
 }
