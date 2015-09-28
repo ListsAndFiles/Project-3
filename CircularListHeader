@@ -9,6 +9,8 @@ public:
 	void remove();
 	void displayCurrent();
 	bool isEmpty();
+	void sort();
+	CircularList<T> search(std::string find);
 	CircularList(){
 		current = new AnimalNode<T>();
 		current->next = current;
