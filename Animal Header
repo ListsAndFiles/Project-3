@@ -24,6 +24,8 @@ public:
 	void setExtinct(bool animalExtinct);
 	void print();
 	void edit();
+	int compare(Animal test);
+	bool hasString(std::string find);
 private:
 	string name;
 	int numberOfLegs;
