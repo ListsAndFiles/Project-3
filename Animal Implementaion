@@ -64,8 +64,8 @@ void Animal::print(){
 	cout << "Name:  " << name << endl
 		<< "Number of legs:  " << numberOfLegs << endl
 		<< "Class:  " << animalClass << endl
-		<< "Can fly:  " << numberOfLegs << endl
-		<< "Extinct:  " << numberOfLegs << endl;
+		<< "Can fly:  " << canFly << endl
+		<< "Extinct:  " << extinct << endl;
 }
 void Animal::edit(){
 	cout << *(this) << endl << endl;
@@ -131,6 +131,20 @@ void Animal::edit(){
 			cout << "Not a valid option." << endl;
 		}
 		}
+	}
+}
+
+int Animal::compare(Animal test){
+	int x = ((*this).getName()).compare(test.getName());
+	return(x);
+}
+
+bool Animal::hasString(std::string find){
+	if(((*this).getName()).find(find) != string::npos){
+		return(true);
+	}
+	else{
+		return(false);
 	}
 }
 
