@@ -1,0 +1,102 @@
+template<class T>
+void CircularList<T>::remove()
+{
+	AnimalNode<T> *q;
+	if(itemsInList == 0)
+	{
+		cout << "No items in List\n";
+	}
+	else
+	{
+		q = current;
+		current = current->next;
+		current->previous = q-> previous
+		(q->previous)-> next = current;
+		delete q;
+		itemsInList--;
+	}
+}
+
+template<class T>
+void CircularList<T>::displayList()
+{
+	if(itemsInList == 0)
+	{
+		cout << "No items in List\n";
+	}
+	else
+	{
+		AnimalNode *r = current;
+		cout << "Items in list:\n"
+		do
+		{
+			cout << r->data << endl;
+			r=r->next;
+		}while(r!=current)
+	}
+}
+
+template<class T>
+void CircularList<T>::displayNext()
+{
+	try{
+		cout << (current->next)->data;
+	}catch(...){
+		cout << "Cannot display next.";
+		}
+}
+
+template<class T>
+void CircularList<T>::writeToTextFile()
+{
+	ofstream textFile("animals.txt", ios::out);
+	if (textFile.is_open{
+		int number = 0;
+		while (number < (signed) vector.size() ) 
+		{
+			textFile << vector.at(number).getName() << '\t' 
+				 << vector.at(number).getNumberOfLegs() << '\t' 
+				 << vector.at(number).getAnimalClass() << '\t'
+				 << vector.at(number).getCanFly() << '\t'
+				 << vector.at(number).getExtinct() << endl;
+					number++;
+		}
+	}
+	textFile.close();
+}
+
+template<class T>
+void CircularList::readFromTextFile()
+{
+	ifstream textFile( "animals.txt", ios::in );
+    if (textFile.is_open)
+	{
+		string animalName, animalAnimalClass;
+		int animalNumberOfLegs;	
+		bool animalCanFly, animalExtinct;
+		while ( !bookTextFile.eof() )
+		{
+			getline(textFile, animalName, '\t');
+			textFile >> animalNumberOfLegs;
+			getline(textFile, animalAnimalClass, '\t');		
+			textFile >> animalCanFly;
+			textFile >> animalExtinct;
+			Animal animal(animalName, animalNumberOfLegs, animalAnimalClass, animalCanFly, animalExtinct);
+			vector.push_back(animal);
+			cout << "Read and stored in vector: " << animal << endl;
+		}
+	}
+	textFile.close();	
+}
+
+template<class T>
+void CiruclarList::writeToBinarFile()
+{
+
+}
+
+template<class T>
+void CiruclarList::readFromBinarFile()
+{
+
+}
