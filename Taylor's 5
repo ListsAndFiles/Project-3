@@ -1,0 +1,51 @@
+template <class T>
+void CircularList<T>::displayPrevious() {
+	try {
+	  cout << (current -> previous) -> data;
+	  }
+	catch(...){
+	  cout << "Can't display previous item.";
+	  }
+}
+
+template <class T>
+void CircularList<T>::displayFirst() {
+	try {
+		cout << "The first element is " << T.front();
+	}
+	catch(...) {
+		cout << "Can't display first item.";
+	}
+}
+
+template <class T>
+void CircularList<T>::displayLast() {
+	try{
+		cout << "The last element is " << T.last();
+	}
+	catch(...) {
+		cout << "Can't display last item.";
+	}
+}
+
+template <class T>
+void CircularList<T>::displaySize() {
+	try {
+		cout << "The list has " << T.size() << "elements.";
+	}
+	catch(...) {
+		cout << "The list is empty.";
+	}
+}
+
+template <class T>
+void CircularList<T>::clear() {
+	Node *Del = Head;
+
+	while (Del != NULL) {
+		Head = Head -> Next;
+		delete Del;
+		Del = Head;
+	}
+	Tail = Head = NULL;
+}
